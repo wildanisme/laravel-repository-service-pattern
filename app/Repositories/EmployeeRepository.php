@@ -4,12 +4,17 @@ namespace App\Repositories;
 
 use App\Contracts\EmployeeInterface;
 use App\Models\Employee;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 
 class EmployeeRepository implements EmployeeInterface
 {
+    /**
+     * @param Request $request
+     * @return Collection
+     */
     public function getAll(Request $request)
     {
         // TODO: Implement getAll() method.
@@ -17,6 +22,10 @@ class EmployeeRepository implements EmployeeInterface
         return Employee::all();
     }
 
+    /**
+     * @param int $id
+     * @return mixed
+     */
     public function getById(int $id)
     {
         // TODO: Implement getPegawaiDetail() method.
@@ -25,6 +34,10 @@ class EmployeeRepository implements EmployeeInterface
         return $result;
     }
 
+    /**
+     * @param $data
+     * @return mixed
+     */
     public function createData($data)
     {
         // TODO: Implement createData() method.
@@ -35,6 +48,11 @@ class EmployeeRepository implements EmployeeInterface
         ]);
     }
 
+    /**
+     * @param int $id
+     * @param array $data
+     * @return mixed
+     */
     public function updateData(int $id, array $data)
     {
         // TODO: Implement updateData() method.
@@ -48,6 +66,10 @@ class EmployeeRepository implements EmployeeInterface
 
     }
 
+    /**
+     * @param int $id
+     * @return mixed
+     */
     public function deleteData(int $id)
     {
         // TODO: Implement deleteData() method.

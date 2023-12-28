@@ -8,11 +8,19 @@ use Illuminate\Http\Request;
 
 class EmployeeService
 {
+    /**
+     * @param EmployeeRepository $repository
+     */
     public function __construct(EmployeeRepository $repository)
     {
+        /** @var TYPE_NAME $repository */
         $this->repository = $repository;
     }
 
+    /**
+     * @param Request $request
+     * @return array
+     */
     public function getAllEmployee(Request $request)
     {
         $id = $request->input('id');
@@ -38,11 +46,19 @@ class EmployeeService
         ];
     }
 
+    /**
+     * @param int $id
+     * @return mixed
+     */
     public function getById(int $id)
     {
         return $this->repository->getById($id);
     }
 
+    /**
+     * @param Request $request
+     * @return array
+     */
     public function createData(Request $request)
     {
         try{
@@ -61,6 +77,12 @@ class EmployeeService
             ];
         }
     }
+
+    /**
+     * @param int $id
+     * @param Request $request
+     * @return array
+     */
     public function updateData(int $id, Request $request)
     {
         try{
@@ -79,7 +101,10 @@ class EmployeeService
         }
     }
 
-
+    /**
+     * @param int $id
+     * @return array
+     */
     public function deleteData(int $id)
     {
         try{

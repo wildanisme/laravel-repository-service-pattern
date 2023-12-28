@@ -32,7 +32,7 @@ class EmployeeController extends Controller
      * @param int $id
      * @return JsonResponse
      */
-    public function show(int $id)
+    public function show(int $id): JsonResponse
     {
         $result = $this->service->getById($id);
         return response()->json([
@@ -57,7 +57,7 @@ class EmployeeController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function update(int $id, Request $request)
+    public function update(int $id, Request $request): JsonResponse
     {
         $result = $this->service->updateData($id, $request);
 
