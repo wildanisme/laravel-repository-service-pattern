@@ -20,7 +20,7 @@ class EmployeeFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'address' => $this->faker->address(),
+            'address' => $this->faker->state(),
             'position' => $this->faker->jobTitle(),
         ];
     }

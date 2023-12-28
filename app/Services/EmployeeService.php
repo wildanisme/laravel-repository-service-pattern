@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Employee;
 use App\Repositories\EmployeeRepository;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,27 @@ class EmployeeService
 
     public function getAllEmployee(Request $request)
     {
-        return $this->repository->getAll($request);
+        $id = $request->input('id');
+        $address = $request->input('address');
+        $position = $request->input('position');
+        if ($id || $address || $position){
+            $result = Employee::where('id', $id)
+                                ->orWhere('position', $position)
+                                ->orWhere('address', $address)
+                                ->get();
+            return [
+                'message' => 'Employee Data',
+                'status' => True,
+                'data' => $result
+            ];
+        }
+        $result = $this->repository->getAll($request);
+
+        return [
+            'message' => 'All Employee Data',
+            'status' => True,
+            'data' => $result
+        ];
     }
 
     public function getById(int $id)
@@ -66,7 +87,7 @@ class EmployeeService
             return[
                 'message' => 'Data Deleted',
                 'status' => True,
-                'data' => null,
+                'data' => $result,
             ];
         } catch (\Throwable $throwable){
             return [

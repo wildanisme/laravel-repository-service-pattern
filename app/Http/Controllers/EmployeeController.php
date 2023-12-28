@@ -25,11 +25,7 @@ class EmployeeController extends Controller
     {
         $result = $this->service->getAllEmployee($request);
 
-        return response()->json([
-            'message' => 'Data semua pegawai',
-            'status' => True,
-            'data' => $result
-        ], 200);
+        return response()->json($result);
     }
 
     /**
@@ -53,7 +49,7 @@ class EmployeeController extends Controller
     public function store(Request $request): jsonResponse
     {
         $result = $this->service->createData($request);
-        return response()->json($result);
+        return response()->json($result, 201);
     }
 
     /**
@@ -65,7 +61,7 @@ class EmployeeController extends Controller
     {
         $result = $this->service->updateData($id, $request);
 
-        return response()->json($result);
+        return response()->json($result, 200);
     }
 
     /**
@@ -75,7 +71,7 @@ class EmployeeController extends Controller
     public function delete(int $id): JsonResponse
     {
         $result = $this->service->deleteData($id);
-        return response()->json($result);
+        return response()->json($result, 204);
     }
 
 }

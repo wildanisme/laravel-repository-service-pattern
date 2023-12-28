@@ -13,12 +13,7 @@ class EmployeeRepository implements EmployeeInterface
     public function getAll(Request $request)
     {
         // TODO: Implement getAll() method.
-        $id = $request->input('id');
-        $position = $request->input('position');
-        if ($id || $position){
-            return Employee::where('id', $id)->orWhere('position', $position)->get();
-        }
-//
+
         return Employee::all();
     }
 
