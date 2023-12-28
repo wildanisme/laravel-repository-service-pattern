@@ -71,7 +71,7 @@ class EmployeeController extends Controller
     public function delete(int $id): JsonResponse
     {
         $result = $this->service->deleteData($id);
-        return response()->json($result);
+        return response()->json($result, 204);
     }
 
 }
